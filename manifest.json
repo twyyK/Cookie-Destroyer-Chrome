@@ -1,0 +1,31 @@
+{
+	"manifest_version": 2,
+	"name": "Cookie Destroyer",
+	"version": "0.3",
+	"description": "This extension delete Cookies on Tab Close, with some good features!",
+	"author": "twyK",
+	"homepage_url": "https://github.com/twyyK/Cookie-Destroyer-Chrome",
+
+	"icons": { "16": "images/16px.png",
+               "48": "images/48px.png",
+               "128": "images/128px.png" },
+
+	"browser_action": {
+	//"default_popup": "popup.html",
+    "default_title": "DESTROY ALL COOOOKIEESS :3"
+    },
+
+    "background": {
+      "scripts": ["js/main.js"]
+    },
+
+	"permissions": [
+	  "activeTab",
+	  "notifications",
+	  "storage",
+	  "tabs",
+	  "https://ajax.googleapis.com/",
+	  "cookies",
+      "*://*/*"
+	]
+}

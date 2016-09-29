@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Cookie Destroyer",
-	"version": "0.3",
+	"version": "0.5",
 	"description": "This extension delete Cookies on Tab Close, with some good features!",
 	"author": "twyK",
 	"homepage_url": "https://github.com/twyyK/Cookie-Destroyer-Chrome",

@@ -11,6 +11,8 @@ var tabToUrl = {};
 var allTabs = [];
 var lastDelCookie = new String();
 
+initWhitelist();
+
   chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     tabToUrl[tabId] = tab.url;
     
@@ -34,7 +36,7 @@ var lastDelCookie = new String();
   chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
     getAllTabs();
       setTimeout(function(){
-          if(allTabs.indexOf(extractDomain(tabToUrl[tabId])) <= -1 && localStorage.getItem('whitelisted-sites').indexOf(extractDomain(tabToUrl[tabId])) == -1){
+          if(allTabs.indexOf(extractDomain(tabToUrl[tabId])) == -1 && localStorage.getItem('whitelisted-sites').indexOf(extractDomain(tabToUrl[tabId])) == -1){
             chrome.cookies.getAll({domain: extractDomain(tabToUrl[tabId])}, function(cookies) {
                 for(var i=0; i < cookies.length; i++) {
                   chrome.cookies.remove({url: "https://" + cookies[i].domain  + cookies[i].path, name: cookies[i].name});
@@ -141,4 +143,14 @@ function whitelistedSitesDel(siteUrl){
   localStorage.setItem('whitelisted-sites', wlSites);
 }
 
+function initWhitelist(){
+  var wlSites = [];
 
+  if(!localStorage.getItem('whitelisted-sites')){
+    localStorage.setItem('whitelisted-sites', wlSites);
+  }
+}
+
+function log(msg){
+  console.log(msg);
+}
